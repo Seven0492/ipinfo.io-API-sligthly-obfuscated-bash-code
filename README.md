@@ -26,5 +26,6 @@ Now you can use it in multiple ways:
   <li><code>./ipinfo.sh [INSERT_IP_ADDRESS]; # (Will return information about the ip address specified)</code></li>
  
   <li><code>./ipinfo.sh [INSERT_OPTIONAL_IP_ADDRESS] debug;
-  # (Will return the final querry link for you to inspect for 60 seconds, it will send the querry after)</code></li>
+  # (Will return the final querry link for you to inspect for 60 seconds,
+  it will send the querry after. Press <strong>Control+C</strong> to terminate the process)</code></li>
 </ul>
