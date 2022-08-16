@@ -41,7 +41,8 @@ if [ "$2" == "debug" ]; then
     echo "Debug ipinfo_2: {$ipinfo_2}"
     echo "Waiting 60 seconds"
     echo
-    while [ $((SECONDS-minus_second)) -lt 61 ]; do
+    declare second="$SECONDS"
+    while [ $SECONDS -lt 61 ]; do
         if [ $second != $SECONDS ]; then
             echo "Timer: $SECONDS"
         fi
