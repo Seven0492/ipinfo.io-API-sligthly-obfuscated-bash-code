@@ -12,6 +12,7 @@ if [ "$if_exist" != NULL ] ; then
     unset if_exist
 fi
 
+# Quotes are messy, but don't worry, it works.
 # shellcheck disable=SC2128
 declare -r ipinfo_1=("$(sed 's/.$//' <<< "$(sed "s/'//" <<< "https://ipinfo.io?token='$token'";)" )")
 
