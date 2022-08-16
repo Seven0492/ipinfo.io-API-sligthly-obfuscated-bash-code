@@ -35,5 +35,6 @@ Now you can use it in multiple ways:
 A good method I found was <a href="https://github.com/neurobin/shc">shc</a> (Shell Script Compiler).
 
 <p>If I understood correctly, it compiles shell code into C code dependent
-on the shell the source shell code specified in the shebang (#!),<br>
-which can be compiled using compilers like gcc and of the like.</p>
+on the shell the source shell code specified in the shebang (#!), which can be compiled using compilers like gcc and of the like.</p>
+
+<ul><li><code>shc -U -f script.sh -o binary # Untraceable binary (prevent strace, ptrace etc..)</code></li></ul>
