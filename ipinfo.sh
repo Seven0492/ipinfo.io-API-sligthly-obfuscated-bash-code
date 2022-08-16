@@ -6,12 +6,14 @@ declare -r token=("$(cd /tmp || cd /tmp || return; touch random_07.txt; echo "$e
 
 declare if_exist=("$(ls /tmp || grep "random_07.txt")")
 
+# shellcheck disable=SC2128
 if [ "$if_exist" != NULL ]; then
     cd /tmp || cd /tmp || return; rm random_07.txt
     unset if_exist
 fi
 
 # Quotes are messy, but don't worry, it works.
+# shellcheck disable=SC2128
 declare -r ipinfo_1=("$(sed 's/.$//' <<< "$(sed "s/'//" <<< "https://ipinfo.io?token='$token'";)" )")
 
 if [ "$1" == "" ] || [ "$1" == "debug" ] ; then
@@ -20,11 +22,19 @@ if [ "$1" == "" ] || [ "$1" == "debug" ] ; then
         echo "Debug ipinfo_1: {$ipinfo_1}"
         echo "Waiting 60 seconds"
         echo
-        sleep 60
+        declare second="$SECONDS"
+        while [ "$SECONDS" -lt 61 ]; do
+            if [ $second != $SECONDS ]; then
+                echo "Timer: $SECONDS"
+            fi
+            second="$SECONDS"
+        done
+        echo
         curl "$ipinfo_1"
         echo
         exit
     fi
+    # shellcheck disable=SC2128
     if [ "$ipinfo_1" != NULL ]; then
         curl "$ipinfo_1"
         echo
@@ -32,18 +42,26 @@ if [ "$1" == "" ] || [ "$1" == "debug" ] ; then
     exit
 fi
 
+# shellcheck disable=SC2128
 declare -r ipinfo_2=("$(sed 's/.$//' <<< "$(sed "s/'//" <<< "https://ipinfo.io/$1?token='$token'";)" )")
 
 if [ "$2" == "debug" ]; then
     echo "Debug ipinfo_2: {$ipinfo_2}"
     echo "Waiting 60 seconds"
     echo
-    sleep 60
+    while [ $((SECONDS-minus_second)) -lt 61 ]; do
+        if [ $second != $SECONDS ]; then
+            echo "Timer: $SECONDS"
+        fi
+        second="$SECONDS"
+    done
+    echo
     curl "$ipinfo_2"
     echo
     exit
 fi
 
+# shellcheck disable=SC2128
 if [ "$ipinfo_2" != NULL ]; then
     curl "$ipinfo_2"
     echo
