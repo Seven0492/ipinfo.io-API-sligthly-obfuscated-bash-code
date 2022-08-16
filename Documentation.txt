@@ -1,0 +1,124 @@
+#!/bin/bash
+
+# = Comments.
+
+# WARNING! This is documentation to explain how it does what it does, but I made it BEFORE v1.0.0. So things are a bit different now. May update later.
+
+# Pre-encrypted token in the new $en_tock variable.
+declare -r en_tock="[CENSORED]"
+
+# Command 'declare -r' creates a new read only variable
+# from the name and value provided.
+#
+# Command 'declare' only does just that but its both
+# possible to read and write at the same time.
+
+
+# Decrypts the token and puts it inside the new $token variable.
+declare -r token=($(cd /tmp; touch random_07.txt; echo "$en_tock" >> random_07.txt; base64 -d random_07.txt))
+
+# Command 'cd' basically teleports to the specified place,
+# not bothering with the terminology here,
+# too long for nothing.
+#
+# Character ';' means the end of a line of code,
+# or that of command/series of expressions.
+#
+# Touch creates a new file with the name provided
+# to it in the given directory, the default
+# is the working(The on you're in) directory.
+#
+# Command 'echo' outputs a string provided
+# to it, normally to stdout(Console).
+# By default it makes a new line at the end of the string,
+# if none, it just prints a newline character.
+#
+# Expression '>>' takes the output/value from the command
+# on the left and gives it to the one on the right,
+# if the output is not 
+# a command(Maybe variables too? Never tested),
+# it appends(Adds at the end) the given output,
+# from the left into the file in the right.
+#
+# Command '[COMMAND_CENSURED] -d' decodes the token :P
+
+
+# To tell if there are remnants to remove/delete.
+declare if_exist=($(ls /tmp || grep "random_07.txt"))
+
+# Command 'ls' scans and outputs the content
+# of the given directory,
+# the default is the working directory.
+#
+# Command 'grep' analyses the input and by default
+# only outputs the line(s) containing the string provided.
+
+
+# If variable $if_exist is not empty, clean up the mess.
+if [ "$if_exist" != NULL ] ; then
+    cd /tmp; rm random_07.txt
+    unset if_exist
+fi
+
+# Command 'rm' deletes the specified file
+# in the given location,
+# by default it removes the named file
+# in the working(The on you're in) directory.
+#
+# Command 'unset' unsets/removes a variable?
+# I'm not sure myself but I think so.
+
+
+# Strips the token of its quotes('').
+declare -r ipinfo_1=("$(sed 's/.$//' <<< "$(sed "s/'//" <<< "https://ipinfo.io?token='$token'";)" )")
+
+# Command 'sed'? I don't really remember that much,
+# but its for splitting and manipulating strings,
+# google it, lazy person.
+#
+# Expression '<<<', takes the value/output from the right
+# and gives it to the command on the left.
+
+
+# If there is no argument(Example: 'cd'),
+# make the first curl querry possible and exit.
+if [ "$1" == "" ] ; then
+
+    # If variable $ipinfo_1 is not set.
+    if [ "$ipinfo_1" != NULL ] ; then
+        curl "$ipinfo_1"
+        echo
+    fi
+    exit
+fi
+
+# Command 'curl'? Ugh...
+# Okay... Really basically it
+# it makes a request to an ip address(A domain is a redirect from the DNS)
+# to send it information based on what is added to the 
+# 'URL'(Universal Ressource Locator). I won't bother with
+# the details since I don't really understand
+# what it does completely.
+#
+# In this case it asks for a .json file(Dictionary I think, google)
+# and outputs it in stdout(Console).
+#
+# $1 variable? Ugh, you're really needy :P
+# Its basically like the earlier example of '[ $1 == "" ]',
+# it checked if there was any argument added to the calling of the script.
+# Has no arguments: 'cd', has a single argument: 'cd ~/Downloads',
+# has two arguments: 'cd ~/Downloads trolling?'.
+# In these examples $1 == '~/Downloads' and $2 == 'trolling?',
+# $0 is reserved for the name of what is executing the script,
+# not in a script it gives the name of the shell interpreting the input.
+
+
+# Does the same thing as the first but sligthly different,
+# specifying the ip address to get info from.
+declare -r ipinfo_2=("$(sed 's/.$//' <<< "$(sed "s/'//" <<< "https://ipinfo.io/${1}?token='$token'";)" )")
+
+# If variable $ipinfo_2 was not set.
+if [ "$ipinfo_2" != NULL ] ; then
+    curl "$ipinfo_2"
+    echo
+fi
