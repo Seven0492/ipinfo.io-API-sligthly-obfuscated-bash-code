@@ -6,7 +6,7 @@ Sligthly obfuscated bash code to send ipinfo.io querries simply by executing and
 
 # How to use
 
-Before using this, you have to register (It's free) at https://ipinfo.io
+Before using this, you have to register (It's free) at https://ipinfo.io.
 
 Retrieve your token and encrypt it to base64.
 
@@ -14,7 +14,7 @@ I made a little script to encrypt without using the browser or a command manuall
 
  ./base64_encrypt.sh [TOKEN]
 
-Now, edit and replace [INSERT_BASE64_TOKEN] in the first lines of ipinfo.sh with your encrypted token
+Now, edit and replace [INSERT_BASE64_ENCRYPTED_TOKEN] in the first lines of ipinfo.sh with your encrypted token
 
 Now you can use in multiple ways:
 
