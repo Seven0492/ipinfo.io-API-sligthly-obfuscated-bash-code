@@ -29,3 +29,11 @@ Now you can use it in multiple ways:
   # (Will return the final querry link for you to inspect for 60 seconds,
   it will send the querry after. Press <strong>Control+C</strong> to terminate the process)</code></li>
 </ul>
+
+## Further obfuscation
+
+A good method I found was <a href="https://github.com/neurobin/shc">shc</a> (Shell Script Compiler).
+
+<p>If I understood correctly, it compiles shell code into C code dependent
+on the shell the source shell code specified in the shebang (#!),<br>
+which can be compiled using compilers like gcc and of the like.</p>
