@@ -16,7 +16,7 @@ I made a little script to encrypt without using the browser or a command manuall
 
 Now, edit and replace [INSERT_BASE64_ENCRYPTED_TOKEN] in the first lines of ipinfo.sh with your encrypted token
 
-Now you can use in multiple ways:
+Now you can use it in multiple ways:
 
  ./ipinfo.sh; # (Gives back information about your public ip address)
  
