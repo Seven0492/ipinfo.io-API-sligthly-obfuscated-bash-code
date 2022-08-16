@@ -1,25 +1,30 @@
-# ipinfo.io-API-sligthly-obfuscated-bash-code
+## ipinfo.io-API-sligthly-obfuscated-bash-code
 
 By Seven#2672 on Discord
 
-Sligthly obfuscated bash code to send ipinfo.io querries simply by executing and putting an argument or not.
+<em>Sligthly</em> obfuscated bash code to send ipinfo.io querries simply by executing and putting an argument or not.
 
 # How to use
 
-Before using this, you have to register (It's free) at https://ipinfo.io.
+<em>Before</em> using this, you have to register (<strong>It's free!</strong>) at <a href="https://ipinfo.io">ipinfo.io</a>.
 
-Retrieve your token and encrypt it to base64.
+<strong>Retrieve</strong> your token and <strong>encrypt</strong> it to base64.
 
-I made a little script to encrypt without using the browser or a command manually:
+I made a little script to encrypt <em>without</em> using the browser or a command manually:
 
- ./base64_encrypt.sh [TOKEN]
+<ul>
+  <li><code>./base64_encrypt.sh [TOKEN]</code></li>
+</ul>
 
-Now, edit and replace [INSERT_BASE64_ENCRYPTED_TOKEN] in the first lines of ipinfo.sh with your encrypted token.
+Now, edit and replace [INSERT_BASE64_ENCRYPTED_TOKEN] in the first lines of <strong>ipinfo.sh</strong> with your encrypted token.
 
 Now you can use it in multiple ways:
 
- ./ipinfo.sh; # (Gives back information about your public ip address)
+<ul>
+  <li><code>./ipinfo.sh; # (Gives back information about your public ip address)</code></li>
  
- ./ipinfo.sh [INSERT_IP_ADDRESS]; # (Will return information about the ip address specified)
+  <li><code>./ipinfo.sh [INSERT_IP_ADDRESS]; # (Will return information about the ip address specified)</code></li>
  
- ./ipinfo.sh [INSERT_OPTIONAL_IP_ADDRESS] debug; # (Will return the final querry link for you to inspect for 60 seconds, it will send the querry after)
+  <li><code>./ipinfo.sh [INSERT_OPTIONAL_IP_ADDRESS] debug;
+  # (Will return the final querry link for you to inspect for 60 seconds, it will send the querry after)</code></li>
+</ul>
